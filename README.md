@@ -22,7 +22,7 @@
          8. Have to do for each match of Super 12s and Knockouts 
       
 
-## Possible data sources    
+## Data sources    
 
 ### Building database from Cricsheet:  
    Source:  add source link here
