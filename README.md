@@ -29,7 +29,7 @@
 
 TABLE 1 -> 1,2,3  
 
-      Team A - Match X (id) - Team B - Year - Runs in Powerplay - Wickets lost in Powerplay - Runs in middle overs -  Wickets lost in middle overs - Runs in Death overs - Wickets lost in death overs - Total Score A - Wickets lost A - Win/Loss A - City - Stadium   
+      Match X (id) - Team A - Team B - Year - Runs in Powerplay - Wickets lost in Powerplay - Runs in middle overs -  Wickets lost in middle overs - Runs in Death overs - Wickets lost in death overs - Total Score A - Wickets lost A - Win/Loss A - City - Stadium - Toss winner - Toss decision  
 
 
 TABLE 2 -> 5,6,7  
