@@ -23,7 +23,7 @@ def run_wickets(df, over):
 
         # find index of all balls over 16.1
         A = field[field < 16.1].index.tolist()
-        B = set(A)-set(field[field < 6.1].index.tolist())
+        B = set(A) - set(field[field < 6.1].index.tolist())
 
         # remove all balls of above index from ball column leaving (balls >= 16.1 and balls < 6.1)
         field = field.drop(index=B)
@@ -44,7 +44,7 @@ def run_wickets(df, over):
 
     # Use indexes based on "A" to remove values from wicket, run and extra data
     wick = wick.drop(index=A).astype(str)
-    wick = wick.apply(lambda x: len(x) > 3) * 1 # convert text to int
+    wick = wick.apply(lambda x: len(x) > 3) * 1  # convert text to int
     run = run.drop(index=A)
     ex = ex.drop(index=A)
 
@@ -82,12 +82,13 @@ def inning(dataf, half_value):
     result['Runs_in_middle_overs'], result['Wickets_lost_in_middle_overs'] = run_wickets(df, 2)
     result['Runs_in_Death_overs'], result['Wickets_lost_in_death_overs'] = run_wickets(df, 3)
 
-    # add all overs score to calculate winning score
-    result['Total_Score_A'] = int(result['Runs_in_Powerplay'][0])+\
-                              int(result['Runs_in_middle_overs'][0])+\
+    # add all overs score to calculate total score and wickets
+    result['Total_Score_A'] = int(result['Runs_in_Powerplay'][0]) + \
+                              int(result['Runs_in_middle_overs'][0]) + \
                               int(result['Runs_in_Death_overs'][0])
+
     result['Total_Wicket_A'] = int(result['Wickets_lost_in_Powerplay'][0]) + \
-                               int(result['Wickets_lost_in_middle_overs'][0]) +\
+                               int(result['Wickets_lost_in_middle_overs'][0]) + \
                                int(result['Wickets_lost_in_death_overs'][0])
 
     # return result dictionary
@@ -113,26 +114,27 @@ def id_info_csv(path):
         field = s.apply(lambda x: x[1])
 
         # pull required data index's
-        a = field[field == 'toss_winner'].index.tolist()
-        a += field[field == 'toss_decision'].index.tolist()
-        a += field[field == 'city'].index.tolist()
-        a += field[field == 'winner'].index.tolist()
+        winnerid = field[field == 'toss_winner'].index.tolist()
+        decisionid = field[field == 'toss_decision'].index.tolist()
+        cityid = field[field == 'city'].index.tolist()
+        winner = field[field == 'winner'].index.tolist()
+        outcomeid = field[field == 'outcome'].index.tolist()
 
-        # check for full return values
-        if len(a) != 4:
-            raise Exception("Result length != 4")
-
-        # pull data based on index values
-        result['toss_winner'] = [s.at[a[0]][2]]
-        result['toss_decision'] = [s.at[a[1]][2]]
-        result['city'] = [s.at[a[2]][2]]
-        result['winner'] = [s.at[a[3]][2]]
-
+        # outcome only appears when there is no winner
+        if len(outcomeid) == 0:
+            outcomeid = 0
+            # pull data based on index values
+            result['toss_winner'] = [s.at[winnerid[0]][2]]
+            result['toss_decision'] = [s.at[decisionid[0]][2]]
+            result['city'] = [s.at[cityid[0]][2]]
+            result['winner'] = [s.at[winner[0]][2]]
+        else:
+            outcomeid = 1
         # delete dataframe
         del field
 
         # return field results
-        return result
+        return result, outcomeid
     except:
         print('Error Occurred with path: ' + path)
         print(result)
@@ -144,7 +146,7 @@ def id_csv(path):
     :param path: should be valid path to file
     :return:
     '''
-    assert isinstance(path,str)
+    assert isinstance(path, str)
 
     # initialization of first inning dictionary
     first_inning = {}
@@ -152,8 +154,8 @@ def id_csv(path):
     try:
         # load data from file
         dataframe = pd.read_csv(path, usecols=["match_id", "start_date", "venue", "innings",
-                                           "ball", "batting_team", "bowling_team", "runs_off_bat",
-                                           "extras", "wicket_type"])
+                                               "ball", "batting_team", "bowling_team", "runs_off_bat",
+                                               "extras", "wicket_type"])
 
         # retrieve constant data across the two innings
         first_inning['id'] = str(dataframe["match_id"][0])
@@ -184,38 +186,42 @@ def id_csv(path):
 
 if __name__ == '__main__':
     # path to directory
-    your_path = './Sample Data'
+    your_path = '../Raw Data/t20s_male_csv2'
     files = os.listdir(your_path)
 
     # create result dataframe
     frame = pd.DataFrame()
 
+    # Game Count
+    k = 0
     # loop over files in directory
     for file in files:
 
-        # check if not an info file
-        if file[-8:-4] != 'info':  # id.csv
-
-            # pull data from id.csv
-            fieldA, fieldB = id_csv(your_path + '/' + file)
+        # check if not an info file and if not a csv file
+        if file[-8:-4] != 'info' and file[-3:] == 'csv':  # id.csv
 
             # pull data from id_info.csv
-            info = id_info_csv(your_path + '/' + file[:-4] + '_info.csv')
+            info, incomplete_game = id_info_csv(your_path + '/' + file[:-4] + '_info.csv')
+            # skip if game was not finished
+            if not incomplete_game:
+                # pull data from id.csv
+                fieldA, fieldB = id_csv(your_path + '/' + file)
 
-            # combine data from both files
-            fieldA.update(info)
-            fieldB.update(info)
+                # combine data from both files
+                fieldA.update(info)
+                fieldB.update(info)
 
-            # just deleting info for ease of reading debugger
-            del info
+                # just deleting info for ease of reading debugger
+                del info
 
-            # add data to dataframe
-            frame = pd.concat([frame, pd.DataFrame(fieldA)])
-            frame = pd.concat([frame, pd.DataFrame(fieldB)])
+                # add data to dataframe
+                frame = pd.concat([frame, pd.DataFrame(fieldA,index=[k])])
+                frame = pd.concat([frame, pd.DataFrame(fieldB,index=[k])])
 
-            # just deleting info for ease of reading debugger
-            del fieldA
-            del fieldB
+                # just deleting info for ease of reading debugger
+                del fieldA
+                del fieldB
+                print(k)
+                k += 1
 
-    print(frame.head())
     frame.to_csv('Result.csv')
