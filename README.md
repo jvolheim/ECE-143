@@ -29,12 +29,12 @@
 
 TABLE 1 -> 1,2,3  
 
-      Team A - Match X (id) - Team B - Year - Batting First A (Y/N) - Runs in Powerplay - Wickets lost in Powerplay - Runs in middle overs -  Wickets lost in middle overs - Runs in Death overs - Wickets lost in death overs - Total Score A - Wickets lost A - Win/Loss A - Country - Stadium   
+      Team A - Match X (id) - Team B - Year - Runs in Powerplay - Wickets lost in Powerplay - Runs in middle overs -  Wickets lost in middle overs - Runs in Death overs - Wickets lost in death overs - Total Score A - Wickets lost A - Win/Loss A - City - Stadium   
 
 
 TABLE 2 -> 5,6,7  
 
-      Stadium - Country - 1st innings ground average  
+      Stadium - City - 1st innings ground average  
     
 ## Tasks and Roles 
 
