@@ -1,0 +1,9 @@
+,id,year,venue,team_A,team_B,RiP,WliP,RiM,WliM,RiD,WliD,Winning Score,toss_winner,toss_decision,city,winner
+0,211028A,2005,The Rose Bowl,Australia,England,48,3,31,7,79,10,178,England,bat,Southampton,England
+0,211028B,2005,The Rose Bowl,England,Australia,129,6,97,5,132,5,374,England,bat,Southampton,England
+0,225263A,2006,County Ground,Pakistan,England,82,3,87,1,127,4,304,England,bat,Bristol,Pakistan
+0,225263B,2006,County Ground,England,Pakistan,104,4,78,5,106,5,302,England,bat,Bristol,Pakistan
+0,222678A,2005,New Wanderers Stadium,New Zealand,South Africa,93,3,65,3,110,4,278,New Zealand,field,Johannesburg,New Zealand
+0,222678B,2005,New Wanderers Stadium,South Africa,New Zealand,74,9,80,4,112,5,284,New Zealand,field,Johannesburg,New Zealand
+0,211048A,2005,Eden Park,New Zealand,Australia,118,8,96,5,126,7,360,Australia,bat,Auckland,Australia
+0,211048B,2005,Eden Park,Australia,New Zealand,156,1,125,4,147,5,438,Australia,bat,Auckland,Australia
