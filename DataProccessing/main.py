@@ -83,9 +83,12 @@ def inning(dataf, half_value):
     result['Runs_in_Death_overs'], result['Wickets_lost_in_death_overs'] = run_wickets(df, 3)
 
     # add all overs score to calculate winning score
-    result['Total_Score_A'] = int(result['Runs_in_Powerplay'][0]) + int(result['Wickets_lost_in_Powerplay'][0]) + \
-                         int(result['Runs_in_middle_overs'][0]) + int(result['Wickets_lost_in_middle_overs'][0]) + \
-                         int(result['Runs_in_Death_overs'][0]) + int(result['Wickets_lost_in_death_overs'][0])
+    result['Total_Score_A'] = int(result['Runs_in_Powerplay'][0])+\
+                              int(result['Runs_in_middle_overs'][0])+\
+                              int(result['Runs_in_Death_overs'][0])
+    result['Total_Wicket_A'] = int(result['Wickets_lost_in_Powerplay'][0]) + \
+                               int(result['Wickets_lost_in_middle_overs'][0]) +\
+                               int(result['Wickets_lost_in_death_overs'][0])
 
     # return result dictionary
     return result
