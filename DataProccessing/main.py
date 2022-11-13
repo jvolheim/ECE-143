@@ -135,7 +135,8 @@ def id_info_csv(path):
 
         # return field results
         return result, outcomeid
-    except:
+    except Exception as e:
+        print(e)
         print('Error Occurred with path: ' + path)
         print(result)
 
@@ -180,14 +181,16 @@ def id_csv(path):
 
         # return data from each inning
         return first_inning, second_inning
-    except:
+    except Exception as e:
+        print(e)
         print('Error Occurred with path: ' + path)
 
 
 if __name__ == '__main__':
     # path to directory
-    your_path = '../Raw Data/t20s_male_csv2'
-    files = os.listdir(your_path)
+    BASE_PATH = os.getcwd()
+    DATA_PATH = os.path.join(BASE_PATH, "Raw Data", "t20s_male_csv2")
+    files = os.listdir(DATA_PATH)
 
     # create result dataframe
     frame = pd.DataFrame()
@@ -200,12 +203,15 @@ if __name__ == '__main__':
         # check if not an info file and if not a csv file
         if file[-8:-4] != 'info' and file[-3:] == 'csv':  # id.csv
 
+            INFO_FNAME = os.path.join(DATA_PATH, f"{file[:-4]}_info.csv")
             # pull data from id_info.csv
-            info, incomplete_game = id_info_csv(your_path + '/' + file[:-4] + '_info.csv')
+            info, incomplete_game = id_info_csv(INFO_FNAME)
             # skip if game was not finished
             if not incomplete_game:
+                CSV_PATH = os.path.join(DATA_PATH, file)
+
                 # pull data from id.csv
-                fieldA, fieldB = id_csv(your_path + '/' + file)
+                fieldA, fieldB = id_csv(CSV_PATH)
 
                 # combine data from both files
                 fieldA.update(info)
@@ -223,5 +229,6 @@ if __name__ == '__main__':
                 del fieldB
                 print(k)
                 k += 1
-
-    frame.to_csv('Result.csv')
+    
+    SAVE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
+    frame.to_csv(SAVE_PATH)
