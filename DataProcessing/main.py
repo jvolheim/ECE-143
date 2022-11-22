@@ -119,7 +119,7 @@ def id_info_csv(path):
         cityid = field[field == 'city'].index.tolist()
         winner = field[field == 'winner'].index.tolist()
         outcomeid = field[field == 'outcome'].index.tolist()
-
+        eventid = field[field == 'event'].index.tolist()
         # outcome only appears when there is no winner
         if len(outcomeid) == 0:
             outcomeid = 0
@@ -128,6 +128,10 @@ def id_info_csv(path):
             result['toss_decision'] = [s.at[decisionid[0]][2]]
             result['city'] = [s.at[cityid[0]][2]]
             result['winner'] = [s.at[winner[0]][2]]
+            if len(eventid)>0:
+                result['event'] = [s.at[eventid[0]][2]]
+            else:
+                result['event'] = ['']
         else:
             outcomeid = 1
         # delete dataframe
@@ -189,7 +193,7 @@ def id_csv(path):
 if __name__ == '__main__':
     # path to directory
     BASE_PATH = os.getcwd()
-    DATA_PATH = os.path.join(BASE_PATH, "Raw Data", "t20s_male_csv2")
+    DATA_PATH = os.path.join(BASE_PATH, "Raw Data", "t20s_updated")
     files = os.listdir(DATA_PATH)
 
     # create result dataframe
@@ -199,7 +203,9 @@ if __name__ == '__main__':
     k = 0
     # loop over files in directory
     for file in files:
-
+        if file == '534208.csv':
+            a = 3
+            pass
         # check if not an info file and if not a csv file
         if file[-8:-4] != 'info' and file[-3:] == 'csv':  # id.csv
 
@@ -230,5 +236,5 @@ if __name__ == '__main__':
                 print(k)
                 k += 1
     
-    SAVE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
+    SAVE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Results_22.csv")
     frame.to_csv(SAVE_PATH)

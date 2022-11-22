@@ -48,6 +48,6 @@ def winloss(full_data: pd.DataFrame):
 
 if __name__ == "__main__":
     BASE_PATH = os.getcwd()
-    DATABASE_PATH = os.path.join(BASE_PATH, "DataProccessing", "Result.csv")
+    DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
     database = pd.read_csv(DATABASE_PATH)
     winloss(database)
