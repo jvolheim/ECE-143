@@ -229,6 +229,14 @@ if __name__ == '__main__':
                 del fieldB
                 print(k)
                 k += 1
+
+    # Updating the frame to remove duplicates
+    # Step 1: Reduce duplications in stadium names using the names preceeded by a comma
+    frame[['match_id', 'innings_number']] = frame.id.str.extract(r'(.*)(.{1})', expand=True)
+    frame['venue'] = frame.venue.str.split(',').str[0]
+
+    # Step 2: Manually check on Google, and update whether the stadiums and/or cities were renamed
+    # This step was manually carried out in Excel after extracting the file in Step 1
     
-    SAVE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
+    SAVE_PATH = os.path.join(BASE_PATH, "DataProcessing", "result_post_step_1.csv")
     frame.to_csv(SAVE_PATH)
