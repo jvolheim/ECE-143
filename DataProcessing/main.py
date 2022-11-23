@@ -203,9 +203,6 @@ if __name__ == '__main__':
     k = 0
     # loop over files in directory
     for file in files:
-        if file == '534208.csv':
-            a = 3
-            pass
         # check if not an info file and if not a csv file
         if file[-8:-4] != 'info' and file[-3:] == 'csv':  # id.csv
 
