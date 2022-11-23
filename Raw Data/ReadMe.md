@@ -28,3 +28,5 @@ We pull the following fields from the <match_id>__info.csv file for each match:
   3. "toss_winner" -> Toss winner -> Static
   4. "Toss_decision" -> Toss decision -> Static 
   5. "winner" -> Result (could be abandoned for rain washed out matches) -> Static
+
+Raw data added in a zip folder; to be used for creation of data table only for event = ICC Men's T20 World Cup and year = 2022
