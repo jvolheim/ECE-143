@@ -42,10 +42,6 @@ def winloss(full_data: pd.DataFrame):
     plt.show()
 
 
-
-    
-    
-
 if __name__ == "__main__":
     BASE_PATH = os.getcwd()
     DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
