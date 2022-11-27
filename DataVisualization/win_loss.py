@@ -21,7 +21,7 @@ def winloss(full_data: pd.DataFrame):
     win_loss_records.sort(key=lambda x:x[0], reverse=True)
     win_loss_df = pd.DataFrame.from_records(win_loss_records, columns=['total_matches', "num_wins", "country"])
     
-    f, ax = plt.subplots(figsize=(10, 8))
+    f, ax = plt.subplots(figsize=(12, 6))
 
     sns.set_color_codes("muted")
     sns.barplot(x="total_matches", y="country", data=win_loss_df,label="Loss", color="r")
