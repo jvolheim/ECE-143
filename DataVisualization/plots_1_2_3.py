@@ -603,7 +603,7 @@ def make_plots_3(db, team_1, team_2 = "All"):
 
 if __name__ == "__main__":
     BASE_PATH = os.getcwd()
-    DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
+    DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "result_post_step_2.csv")
     database = pd.read_csv(DATABASE_PATH)
     make_plots_1(database, "India")
     make_plots_2(database, "India")
