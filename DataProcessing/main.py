@@ -189,12 +189,15 @@ def id_csv(path):
         print(e)
         print('Error Occurred with path: ' + path)
 
+def pre_process_data(input_directory_path, output_path):
+    '''
 
-if __name__ == '__main__':
-    # path to directory
-    BASE_PATH = os.getcwd()
-    DATA_PATH = os.path.join(BASE_PATH, "Raw Data", "t20s_updated")
-    files = os.listdir(DATA_PATH)
+    :param input_directory_path: local path to data directory
+    :param output_path: local path to database storage location
+    :return:
+    '''
+
+    files = os.listdir(input_directory_path)
 
     # create result dataframe
     frame = pd.DataFrame()
@@ -224,8 +227,8 @@ if __name__ == '__main__':
                 del info
 
                 # add data to dataframe
-                frame = pd.concat([frame, pd.DataFrame(fieldA,index=[k])])
-                frame = pd.concat([frame, pd.DataFrame(fieldB,index=[k])])
+                frame = pd.concat([frame, pd.DataFrame(fieldA, index=[k])])
+                frame = pd.concat([frame, pd.DataFrame(fieldB, index=[k])])
 
                 # just deleting info for ease of reading debugger
                 del fieldA
@@ -234,12 +237,24 @@ if __name__ == '__main__':
                 k += 1
 
     # Updating the frame to remove duplicates
-    # Step 1: Reduce duplications in stadium names using the names preceeded by a comma
+    # Step 1: Reduce duplications in stadium names using the names preceded by a comma
     frame[['match_id', 'innings_number']] = frame.id.str.extract(r'(.*)(.{1})', expand=True)
     frame['venue'] = frame.venue.str.split(',').str[0]
 
-    # Step 2: Manually check on Google, and update whether the stadiums and/or cities were renamed
-    # This step was manually carried out in Excel after extracting the file in Step 1
-    
-    SAVE_PATH = os.path.join(BASE_PATH, "DataProcessing", "result_post_step_1.csv")
-    frame.to_csv(SAVE_PATH)
+    frame.to_csv(output_path)
+
+    return True
+
+
+
+
+
+
+if __name__ == '__main__':
+    # path to directory
+    BASE_PATH = os.getcwd()
+    DATA_PATH = os.path.join(BASE_PATH, "Raw Data", "t20s_updated")
+    # path to save location
+    SAVE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
+
+    pre_process_data(DATA_PATH,SAVE_PATH)
