@@ -60,7 +60,7 @@ def win_loss_compare(wc_df):
     plt.savefig(SAVE_PATH)
 
 if __name__ == "__main__":
-    df = pd.read_csv("DataProcessing/result_post_step_2.csv")
+    df = pd.read_csv("DataProcessing/result_post_step.csv")
     wc_df = seperate_wc(df)
     avg_inn1_score = average_inng_total(wc_df, 'A')
     avg_inn2_score = average_inng_total(wc_df, 'B')

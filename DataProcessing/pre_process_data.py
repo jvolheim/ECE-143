@@ -253,7 +253,7 @@ def pre_process_data(input_directory_path, output_path):
 if __name__ == '__main__':
     # path to directory
     BASE_PATH = os.getcwd()
-    DATA_PATH = os.path.join(BASE_PATH, "Raw Data", "t20s_updated")
+    DATA_PATH = os.path.join(BASE_PATH, "Raw Data", "t20s_male_csv_files")
     # path to save location
     SAVE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
 

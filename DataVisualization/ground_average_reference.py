@@ -39,5 +39,5 @@ def ground_averages_reference(df):
 
 if __name__ == "__main__":
     BASE_PATH = os.getcwd()
-    database = pd.read_csv('../DataProcessing/result_post_step_2.csv')
+    database = pd.read_csv('../DataProcessing/result_post_step.csv')
     ground_averages_reference(database)

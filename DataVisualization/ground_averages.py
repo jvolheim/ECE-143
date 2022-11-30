@@ -61,6 +61,6 @@ def ground_averages(db):
 
 if __name__ == "__main__":
     BASE_PATH = os.getcwd()
-    DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "result_post_step_2.csv")
+    DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "result_post_step.csv")
     database = pd.read_csv(DATABASE_PATH)
     ground_averages(database)

@@ -156,7 +156,7 @@ def win_composition(db,averages):
 
 if __name__ == "__main__":
     BASE_PATH = os.getcwd()
-    database = pd.read_csv('../DataProcessing/result_post_step_2.csv')
+    database = pd.read_csv('../DataProcessing/result_post_step.csv')
     averages=ground_averages(database)
     performance(database,averages)
     win_composition(database,averages)
