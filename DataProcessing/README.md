@@ -37,6 +37,14 @@
     - pandas module
     - os module
 
+### Usage example
+    
+    Running this code inside the repository stucture should require nothing more than 
+    running the pre_process_data.py file.
+
+    For running the code as a module follow the example code in the if __main__: section 
+    found at the bottom of pre_process_data.py
+
 ### Useful resource links
 
 - [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/index.html)
