@@ -9,6 +9,7 @@
     Some manual processing via google and excel is required to check for cities and/or stadiums 
     that were renamed. The results of this processing can be seen in the results_post_step.csv file 
 ### Requirements 
+    - Raw cricsheet data stored in directory
     - pandas module
     - os module
 
