@@ -1,7 +1,3 @@
 ## Visualization ReadMe
 
-     Win/Loss Ratio image 
-![image](plots/win-loss.png)
-
-    Next image 
-
+## Add breif description of each python file and what it does
