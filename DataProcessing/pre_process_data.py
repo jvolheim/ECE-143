@@ -189,8 +189,11 @@ def id_csv(path):
         print(e)
         print('Error Occurred with path: ' + path)
 
+
 def pre_process_data(input_directory_path, output_path):
     '''
+    Runs the main loop for processing the data in each file and creating the
+    resultant data csv file which will be used in analysis
 
     :param input_directory_path: local path to data directory
     :param output_path: local path to database storage location
@@ -237,16 +240,13 @@ def pre_process_data(input_directory_path, output_path):
                 k += 1
 
     # Updating the frame to remove duplicates
-    # Step 1: Reduce duplications in stadium names using the names preceded by a comma
+    # Reduce duplications in stadium names using the names preceded by a comma
     frame[['match_id', 'innings_number']] = frame.id.str.extract(r'(.*)(.{1})', expand=True)
     frame['venue'] = frame.venue.str.split(',').str[0]
 
     frame.to_csv(output_path)
 
     return True
-
-
-
 
 
 
