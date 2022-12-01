@@ -601,10 +601,10 @@ def make_plots_3(db, team_1, team_2 = "All"):
 
     plt.savefig("Phases_runs_wickets_bat_second_"+str(team_1)+"_"+str(team_2)+".png")
 
-if __name__ == "__main__":
-    BASE_PATH = os.getcwd()
-    DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "result_post_step.csv")
-    database = pd.read_csv(DATABASE_PATH)
-    make_plots_1(database, "India")
-    make_plots_2(database, "India")
-    make_plots_3(database, "India")
+#if __name__ == "__main__":
+    #BASE_PATH = os.getcwd()
+    #DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "result_post_step.csv")
+    #database = pd.read_csv(DATABASE_PATH)
+    #make_plots_1(database, "India")
+    #make_plots_2(database, "India")
+    #make_plots_3(database, "India")
