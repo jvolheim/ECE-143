@@ -34,6 +34,23 @@ def plot_avg_scores(avg_inn_score):
     return
 
 
+def win_loss_inn_wise(wc_df):
+    batting_first_wins = wc_df[(wc_df['innings_number'] == 'A') & (wc_df['team_A'] == wc_df['winner'])]
+    batting_first_wins_team_wise = batting_first_wins[['team_A', 'id']].groupby('team_A').count().reset_index()
+    total_batting_first = wc_df[(wc_df['innings_number'] == 'A')]
+    total_batting_first_team_wise = total_batting_first[['team_A', 'id']].groupby('team_A').count().reset_index()
+    merged_data = pd.merge(left = batting_first_wins_team_wise, right=total_batting_first_team_wise, how="outer", on="team_A")
+    merged_data['win_percent'] = merged_data['id_x'] / merged_data['id_y']
+    
+    bowling_first_wins = wc_df[(wc_df['innings_number'] == 'A') & (wc_df['team_B'] == wc_df['winner'])]
+    bowling_first_wins_team_wise = bowling_first_wins[['team_B', 'id']].groupby('team_B').count().reset_index()
+    total_bowling_first = wc_df[(wc_df['innings_number'] == 'A')]
+    total_bowling_first_team_wise = total_bowling_first[['team_B', 'id']].groupby('team_B').count().reset_index()
+    merged_data2 = pd.merge(left = bowling_first_wins_team_wise, right=total_bowling_first_team_wise, how="outer", on="team_B")
+    merged_data2['win_percent'] = merged_data2['id_x'] / merged_data2['id_y']
+    return merged_data, merged_data2
+
+
 def win_loss_compare(wc_df):
     wc_df['teamA_winner'] = (wc_df['team_A'] == wc_df['winner'])
     wins = wc_df[['team_A', 'teamA_winner']].groupby('team_A').sum().reset_index()
@@ -65,6 +82,8 @@ if __name__ == "__main__":
     avg_inn1_score = average_inng_total(wc_df, 'A')
     avg_inn2_score = average_inng_total(wc_df, 'B')
     avg_inn_score = pd.concat([avg_inn1_score, avg_inn2_score], ignore_index=True)
+    b1, b2 = win_loss_inn_wise(wc_df)
+    print(b1, b2, sep="\n\n")
     plot_avg_scores(avg_inn_score)
     win_loss_compare(wc_df)
     plt.show()
