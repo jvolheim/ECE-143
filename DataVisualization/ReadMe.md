@@ -49,10 +49,10 @@ param team_2: Team against which win-loss is to be calculated; str; default valu
 Output:
 
 India against all oppositions
-![](plots/Win_Loss_%_India_All.png)
+![image](https://user-images.githubusercontent.com/64548290/205230518-472b1602-9d87-4ecd-b599-ffd30f12736d.png)
 
 India against England
-![](plots/Win_Loss_%_India_England.png)
+
 
 **def make_plots_2(db, team_1, team_2 = "All")**
 
