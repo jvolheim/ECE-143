@@ -10,7 +10,7 @@ def make_plots_1(db, team_1, team_2 = "All"):
 
     param db: Database ; pandas Dataframe
     param team_1: Team for which win-loss is to be calculated; str
-    param tea,_2: Team against which win-loss is to be calculated; str; default value = all
+    param team_2: Team against which win-loss is to be calculated; str; default value = all
     """
 
     assert isinstance(db, pd.DataFrame)
@@ -120,7 +120,7 @@ def make_plots_2(db, team_1, team_2 = "All"):
 
     param db: Database ; pandas Dataframe
     param team_1: Team for which said metrics are to be plotted; str
-    param tea,_2: Team against which said metrics are to be plotted; str; default value = all
+    param team_2: Team against which said metrics are to be plotted; str; default value = all
     """
 
     assert isinstance(db, pd.DataFrame)
@@ -310,7 +310,7 @@ def make_plots_3(db, team_1, team_2 = "All"):
 
     param db: Database ; pandas Dataframe
     param team_1: Team for which said metrics are to be plotted; str
-    param tea,_2: Team against which said metrics are to be plotted; str; default value = all
+    param team_2: Team against which said metrics are to be plotted; str; default value = all
     """
 
     assert isinstance(db, pd.DataFrame)
