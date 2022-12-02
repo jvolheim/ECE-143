@@ -18,7 +18,7 @@ def winloss(full_data: pd.DataFrame):
         num_wins = sum(country_data['winner'] == country)
         total_matches = country_data['winner'].size
         win_loss_records.append((total_matches, num_wins, country))
-    win_loss_records.sort(key=lambda x:x[0], reverse=True)
+    win_loss_records.sort(key=lambda x:x[1]/x[0], reverse=True)
     win_loss_df = pd.DataFrame.from_records(win_loss_records, columns=['total_matches', "num_wins", "country"])
     
     f, ax = plt.subplots(figsize=(12, 6))
@@ -44,6 +44,6 @@ def winloss(full_data: pd.DataFrame):
 
 if __name__ == "__main__":
     BASE_PATH = os.getcwd()
-    DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "Result.csv")
+    DATABASE_PATH = os.path.join(BASE_PATH, "DataProcessing", "result_post_step.csv")
     database = pd.read_csv(DATABASE_PATH)
     winloss(database)

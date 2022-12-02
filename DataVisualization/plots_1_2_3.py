@@ -155,6 +155,9 @@ def make_plots_2(db, team_1, team_2 = "All"):
         country_data = country_data.loc[(country_data['team_B'] == team_2)]
 
     years = np.sort(list(country_data.year.unique())) 
+    num_matches = []
+    num_matches_bat = []
+    num_matches_ball = []
 
     for year_ref in years:
         year_data = country_data.loc[(country_data['year'] == year_ref)]
@@ -202,6 +205,9 @@ def make_plots_2(db, team_1, team_2 = "All"):
         except:
             avg_wickets_ball = 0
         avg_score_record.append((year_ref, np.round((num_score_total/total_matches),2), np.round(num_wickets_total/total_matches, 2), avg_score_bat, avg_wickets_bat, avg_score_ball, avg_wickets_ball))
+        num_matches.append(f"{year_ref} ({total_matches})")
+        num_matches_ball.append(f"{year_ref} ({total_matches_ball})")
+        num_matches_bat.append(f"{year_ref} ({total_matches_bat})")
     avg_score_df = pd.DataFrame.from_records(avg_score_record, columns=["year", "score_total", "wickets_total", "score_bat", "wickets_bat", "score_ball", "wickets_ball"])
     avg_score_df = avg_score_df.set_index("year")
 
@@ -220,20 +226,19 @@ def make_plots_2(db, team_1, team_2 = "All"):
         ax[0].set_title("Avg. runs scored across all T20 matches since 2016: "+str(team_1), loc='center')
     else:
         ax[0].set_title("Avg. runs scored against "+str(team_2)+" in all T20I matches since 2016: "+str(team_1), loc='center')
-    ax[0].set_xlabel('Year')
     ax[0].set_ylabel('Avg. runs scored')
-    ax[0].set_xticks(r) 
-    ax[0].set_xticklabels(years)
+    ax[0].set_xticks([]) 
+    ax[0].set_xticklabels([])
 
     ax[1].bar(r, avg_score_df.iloc[:,1], color = 'g')
     if team_2 == "All":
         ax[1].set_title('Avg. wickets conceded across all T20 matches since 2016: '+str(team_1), loc='center')
     else:
         ax[1].set_title('Avg. wickets conceded against '+str(team_2)+' in all T20I matches since 2016: '+str(team_1), loc='center')
-    ax[1].set_xlabel('Year')
+    ax[1].set_xlabel('Year (Matches played)')
     ax[1].set_ylabel('Avg. wickets conceded')
     ax[1].set_xticks(r) 
-    ax[1].set_xticklabels(years)
+    ax[1].set_xticklabels(num_matches)
 
     k = 0
     for i in set_labels_total:
@@ -249,20 +254,19 @@ def make_plots_2(db, team_1, team_2 = "All"):
         ax[0].set_title('Avg. runs scored across all T20 matches batting first since 2016: '+str(team_1), loc='center')
     else:
         ax[0].set_title('Avg. runs scored against '+str(team_2)+' in all T20I matches batting first since 2016: '+str(team_1), loc='center')
-    ax[0].set_xlabel('Year')
     ax[0].set_ylabel('Avg. runs scored')
-    ax[0].set_xticks(r) 
-    ax[0].set_xticklabels(years)
+    ax[0].set_xticks([]) 
+    ax[0].set_xticklabels([])
 
     ax[1].bar(r, avg_score_df.iloc[:,3], color = 'g')
     if team_2 == "All":
         ax[1].set_title('Avg. wickets conceded across all T20 matches batting first since 2016: '+str(team_1), loc='center')
     else:
         ax[1].set_title('Avg. wickets conceded against '+str(team_2)+' in all T20I matches batting first since 2016: '+str(team_1), loc='center')
-    ax[1].set_xlabel('Year')
+    ax[1].set_xlabel('Years (Matches Played)')
     ax[1].set_ylabel('Avg. wickets conceded')
     ax[1].set_xticks(r) 
-    ax[1].set_xticklabels(years)
+    ax[1].set_xticklabels(num_matches_bat)
 
     k = 0
     for i in set_labels_bat:
@@ -278,20 +282,19 @@ def make_plots_2(db, team_1, team_2 = "All"):
         ax[0].set_title('Avg. runs scored across all T20 matches batting second since 2016: '+str(team_1), loc='center')
     else:
         ax[0].set_title('Avg. runs scored against '+str(team_2)+' in all T20I matches batting second since 2016: '+str(team_1), loc='center')
-    ax[0].set_xlabel('Year')
     ax[0].set_ylabel('Avg. runs scored')
-    ax[0].set_xticks(r) 
-    ax[0].set_xticklabels(years)
+    ax[0].set_xticks([]) 
+    ax[0].set_xticklabels([])
 
     ax[1].bar(r, avg_score_df.iloc[:,5], color = 'g')
     if team_2 == "All":
         ax[1].set_title('Avg. wickets conceded across all T20 matches batting second since 2016: '+str(team_1), loc='center')
     else:
         ax[1].set_title('Avg. wickets conceded against '+str(team_2)+' in all T20I matches batting second since 2016: '+str(team_1), loc='center')
-    ax[1].set_xlabel('Year')
+    ax[1].set_xlabel('Years (Matches Played)')
     ax[1].set_ylabel('Avg. wickets conceded')
     ax[1].set_xticks(r) 
-    ax[1].set_xticklabels(years)
+    ax[1].set_xticklabels(num_matches_ball)
 
     k = 0
     for i in set_labels_ball:
