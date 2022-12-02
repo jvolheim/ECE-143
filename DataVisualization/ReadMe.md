@@ -1,6 +1,6 @@
 ## Visualization ReadMe
 
-    Add breif description of each python file and what it does for an example you can
+    Add brief description of each python file and what it does for an example you can
     look at the readme file in Data processing and the requirements in the root directory 
     Readme file
 
