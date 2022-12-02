@@ -322,7 +322,7 @@ def create_team_visualizations(ds):
 
     plt.savefig("Pakistan_vs_other_teams.png")
     
-    #Pie charts for the total performances of the final four teams in wins and losses
+    #Pie charts for the total performances of the final four teams in wins
     good_batting_performance_England=0
     good_bowling_performance_England=0
     both_England=0
@@ -359,82 +359,26 @@ def create_team_visualizations(ds):
     plt.figure(figsize=(16,9))
     plt.pie(Performance_England,labels=labels,autopct='%1.1f%%')
     plt.title("Composition of Wins, England")
-    plt.show()
+    plt.savefig("England_performance.png")
     Performance_India = np.array([good_batting_performance_India,good_bowling_performance_India,both_India])
     labels=["good batting","good bowling","both"]
     plt.figure(figsize=(16,9))
     plt.pie(Performance_India,labels=labels,autopct='%1.1f%%')
     plt.title("Composition of Wins, India")
-    plt.show()
+    plt.savefig("India_performance.png")
     Performance_NewZealand = np.array([good_batting_performance_NewZealand,good_bowling_performance_NewZealand,both_NewZealand])
     labels=["good batting","good bowling","both"]
     plt.figure(figsize=(16,9))
     plt.pie(Performance_NewZealand,labels=labels,autopct='%1.1f%%')
     plt.title("Composition of Wins, New Zealand")
-    plt.show()
+    plt.savefig("NewZealand_performance.png")
     Performance_Pakistan = np.array([good_batting_performance_Pakistan,good_bowling_performance_Pakistan,both_Pakistan])
     labels=["good batting","good bowling","both"]
     plt.figure(figsize=(16,9))
     plt.pie(Performance_Pakistan,labels=labels,autopct='%1.1f%%')
     plt.title("Composition of Wins, Pakistan")
-    plt.show()
-    
-    good_batting_performance_England=0
-    good_bowling_performance_England=0
-    both_England=0
-    good_batting_performance_India=0
-    good_bowling_performance_India=0
-    both_India=0
-    good_batting_performance_NewZealand=0
-    good_bowling_performance_NewZealand=0
-    both_NewZealand=0
-    good_batting_performance_Pakistan=0
-    good_bowling_performance_Pakistan=0
-    both_Pakistan=0
-    for index, row in ds.iterrows():
-        if ((row['home']=='England')&(row['win_or_loss']==0)):  
-            good_batting_performance_England+=row['batting_perf']
-            good_bowling_performance_England+=row['bowling_perf']
-            both_England+=row['both_perf'] 
-        elif ((row['home']=='India')&(row['win_or_loss']==0)):  
-            good_batting_performance_India+=row['batting_perf']
-            good_bowling_performance_India+=row['bowling_perf']
-            both_India+=row['both_perf']
-        elif ((row['home']=='New Zealand')&(row['win_or_loss']==0)):  
-            good_batting_performance_NewZealand+=row['batting_perf']
-            good_bowling_performance_NewZealand+=row['bowling_perf']
-            both_NewZealand+=row['both_perf']
-        elif ((row['home']=='Pakistan')&(row['win_or_loss']==0)):  
-            good_batting_performance_Pakistan+=row['batting_perf']
-            good_bowling_performance_Pakistan+=row['bowling_perf']
-            both_Pakistan+=row['both_perf']
-        else:
-            continue
-    Performance_England = np.array([good_batting_performance_England,good_bowling_performance_England,both_England])
-    labels=["good batting","good bowling","both"]
-    plt.figure(figsize=(16,9))
-    plt.pie(Performance_England,labels=labels,autopct='%1.1f%%')
-    plt.title("Composition of Losses, England")
-    plt.show()
-    Performance_India = np.array([good_batting_performance_India,good_bowling_performance_India,both_India])
-    labels=["good batting","good bowling","both"]
-    plt.figure(figsize=(16,9))
-    plt.pie(Performance_India,labels=labels,autopct='%1.1f%%')
-    plt.title("Composition of Losses, India")
-    plt.show()
-    Performance_NewZealand = np.array([good_batting_performance_NewZealand,good_bowling_performance_NewZealand,both_NewZealand])
-    labels=["good batting","good bowling","both"]
-    plt.figure(figsize=(16,9))
-    plt.pie(Performance_NewZealand,labels=labels,autopct='%1.1f%%')
-    plt.title("Composition of Losses, New Zealand")
-    plt.show()
-    Performance_Pakistan = np.array([good_batting_performance_Pakistan,good_bowling_performance_Pakistan,both_Pakistan])
-    labels=["good batting","good bowling","both"]
-    plt.figure(figsize=(16,9))
-    plt.pie(Performance_Pakistan,labels=labels,autopct='%1.1f%%')
-    plt.title("Composition of Losses, Pakistan")
-    plt.show()
-
+    plt.savefig("Pakistan_performance.png")
+       
 def world_map_visualization(avg_db):
     """
     param db: Database ; pandas Dataframe
