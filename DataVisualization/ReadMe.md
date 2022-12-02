@@ -94,7 +94,7 @@ India against England
 
 #### Requirements
 
-Follow the instructions mentioned under "Requirements" and "Running the code" in the Readme file on the root directory page
+Follow the instructions mentioned under "Requirements" and "Running Code" in the Readme file on the root directory page
 
 ### wc_stats.py
 
