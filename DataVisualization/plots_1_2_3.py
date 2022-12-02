@@ -345,6 +345,9 @@ def make_plots_3(db, team_1, team_2 = "All"):
         country_data = country_data.loc[(country_data['team_B'] == team_2)]
 
     years = np.sort(list(country_data.year.unique()))
+    num_matches = []
+    num_matches_bat = []
+    num_matches_ball = []
 
     for year_ref in years:
 
@@ -511,6 +514,9 @@ def make_plots_3(db, team_1, team_2 = "All"):
             avg_wickets_D_ball = 0
 
         phase_score_record.append((year_ref, avg_runs_P_overall, avg_wickets_P_overall, avg_runs_M_overall, avg_wickets_M_overall, avg_runs_D_overall, avg_wickets_D_overall, avg_runs_P_bat, avg_wickets_P_bat, avg_runs_M_bat, avg_wickets_M_bat, avg_runs_D_bat, avg_wickets_D_bat, avg_runs_P_ball, avg_wickets_P_ball, avg_runs_M_ball, avg_wickets_M_ball, avg_runs_D_ball, avg_wickets_D_ball))
+        num_matches.append(f"{year_ref} ({total_matches_overall})")
+        num_matches_bat.append(f"{year_ref} ({total_matches_bat})")
+        num_matches_ball.append(f"{year_ref} ({total_matches_ball})")
     phase_score_df = pd.DataFrame.from_records(phase_score_record, columns=["year", "avg_score_P_overall", "avg_wickets_P_overall", "avg_score_M_overall", "avg_wickets_M_overall", "avg_score_D_overall", "avg_wickets_D_overall", "avg_score_P_bat", "avg_wickets_P_bat", "avg_score_M_bat", "avg_wickets_M_bat", "avg_score_D_bat", "avg_wickets_D_bat", "avg_score_P_ball", "avg_wickets_P_ball", "avg_score_M_ball", "avg_wickets_M_ball", "avg_score_D_ball", "avg_wickets_D_ball"])
     phase_score_df = phase_score_df.set_index("year")
 
@@ -527,10 +533,9 @@ def make_plots_3(db, team_1, team_2 = "All"):
         ax[0].set_title('Phase wise breakdown of avg. runs per over scored across all T20 matches since 2016: '+str(team_1), loc='center')
     else:
         ax[0].set_title('Phase wise breakdown of avg. runs per over scored against '+str(team_2)+' in all T20I matches since 2016: '+str(team_1), loc='center')
-    ax[0].set_xlabel('Year')
     ax[0].set_ylabel('Avg. runrate per over')
-    ax[0].set_xticks(r+width) 
-    ax[0].set_xticklabels(years)
+    ax[0].set_xticks([]) 
+    ax[0].set_xticklabels([])
     ax[0].legend(loc = 'best')
 
     ax[1].bar(r, phase_score_df.iloc[:,1], width=width, label = 'Powerplay', color = 'tab:blue')
@@ -540,10 +545,10 @@ def make_plots_3(db, team_1, team_2 = "All"):
         ax[1].set_title('Phase wise breakdown of avg. wickets conceded across all T20 matches since 2016: '+str(team_1), loc='center')
     else:
         ax[1].set_title('Phase wise breakdown of avg. wickets conceded against '+str(team_2)+' in all T20I matches since 2016: '+str(team_1), loc='center')
-    ax[1].set_xlabel('Year')
+    ax[1].set_xlabel('Year (Matches Played)')
     ax[1].set_ylabel('Avg. wickets conceded')
     ax[1].set_xticks(r+width)
-    ax[1].set_xticklabels(years)
+    ax[1].set_xticklabels(num_matches)
     ax[1].legend(loc = 'best')
 
     plt.savefig("Phases_runs_wickets_overall_"+str(team_1)+"_"+str(team_2)+".png")
@@ -558,10 +563,9 @@ def make_plots_3(db, team_1, team_2 = "All"):
         ax[0].set_title('Phase wise breakdown of avg. runs per over scored across all T20 matches batting first since 2016: '+str(team_1), loc='center')
     else:
         ax[0].set_title('Phase wise breakdown of avg. runs per over scored against '+str(team_2)+' in all T20I matches batting first since 2016: '+str(team_1), loc='center')
-    ax[0].set_xlabel('Year')
     ax[0].set_ylabel('Avg. runrate per over')
-    ax[0].set_xticks(r+width) 
-    ax[0].set_xticklabels(years)
+    ax[0].set_xticks([]) 
+    ax[0].set_xticklabels([])
     ax[0].legend(loc = 'best')
 
     ax[1].bar(r, phase_score_df.iloc[:,7], width=width, label = 'Powerplay', color = 'tab:blue')
@@ -571,10 +575,10 @@ def make_plots_3(db, team_1, team_2 = "All"):
         ax[1].set_title('Phase wise breakdown of avg. wickets conceded across all T20 matches batting first since 2016: '+str(team_1), loc='center')
     else:
         ax[1].set_title('Phase wise breakdown of avg. wickets conceded against '+str(team_2)+' in all T20I matches batting first since 2016: '+str(team_1), loc='center')
-    ax[1].set_xlabel('Year')
+    ax[1].set_xlabel('Year (Matches Played)')
     ax[1].set_ylabel('Avg. wickets conceded')
     ax[1].set_xticks(r+width)
-    ax[1].set_xticklabels(years)
+    ax[1].set_xticklabels(num_matches_bat)
     ax[1].legend(loc = 'best')
 
     plt.savefig("Phases_runs_wickets_bat_first_"+str(team_1)+"_"+str(team_2)+".png")
@@ -589,10 +593,9 @@ def make_plots_3(db, team_1, team_2 = "All"):
         ax[0].set_title('Phase wise breakdown of avg. runs per over scored across all T20 matches batting second since 2016: '+str(team_1), loc='center')
     else:
         ax[0].set_title('Phase wise breakdown of avg. runs per over scored against '+str(team_2)+' in all T20I matches batting second since 2016: '+str(team_1), loc='center')
-    ax[0].set_xlabel('Year')
     ax[0].set_ylabel('Avg. runrate per over')
-    ax[0].set_xticks(r+width) 
-    ax[0].set_xticklabels(years)
+    ax[0].set_xticks([]) 
+    ax[0].set_xticklabels([])
     ax[0].legend(loc = 'best')
 
     ax[1].bar(r, phase_score_df.iloc[:,13], width=width, label = 'Powerplay', color = 'tab:blue')
@@ -602,10 +605,10 @@ def make_plots_3(db, team_1, team_2 = "All"):
         ax[1].set_title('Phase wise breakdown of avg. wickets conceded across all T20 matches batting second since 2016: '+str(team_1), loc='center')
     else:
         ax[1].set_title('Phase wise breakdown of avg. wickets conceded against '+str(team_2)+' in all T20I matches batting second since 2016: '+str(team_1), loc='center')
-    ax[1].set_xlabel('Year')
+    ax[1].set_xlabel('Year (Matches Played)')
     ax[1].set_ylabel('Avg. wickets conceded')
     ax[1].set_xticks(r+width)
-    ax[1].set_xticklabels(years)
+    ax[1].set_xticklabels(num_matches_ball)
     ax[1].legend(loc = 'best')
 
     plt.savefig("Phases_runs_wickets_bat_second_"+str(team_1)+"_"+str(team_2)+".png")
