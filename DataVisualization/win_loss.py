@@ -6,6 +6,12 @@ import matplotlib.pyplot as plt
 def winloss(full_data: pd.DataFrame):
     """
     function to extract useful data for win-loss record and create corresponding visualization 
+    :params:
+        - full_data: complete database
+    
+    :returns:
+        plots win-loss percentage for all countries from 2016 sorted by win percent
+
     """
     assert isinstance(full_data, pd.DataFrame)
 
