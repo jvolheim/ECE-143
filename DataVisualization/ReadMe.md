@@ -52,7 +52,7 @@ India against all oppositions
 ![image](https://user-images.githubusercontent.com/64548290/205230518-472b1602-9d87-4ecd-b599-ffd30f12736d.png)
 
 India against England
-
+![image](https://user-images.githubusercontent.com/64548290/205231512-7d91d328-cf29-4166-b697-d3ce552ce0d8.png)
 
 **def make_plots_2(db, team_1, team_2 = "All")**
 
