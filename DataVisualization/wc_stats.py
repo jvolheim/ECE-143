@@ -28,9 +28,9 @@ def plot_avg_scores(avg_inn_score):
     sns.barplot(x="Total_Score_A", y=f"Team Name", data=avg_inn_score, hue='innings_number')
     plt.xlabel("Average Score")
     plt.title("Average First and Second Innings scores by different teams during WC")
-    SAVE_PATH = os.path.join(os.getcwd(), 'DataVisualization', 'plots', 'avg_wc_scores.png')
+    # SAVE_PATH = os.path.join(os.getcwd(), 'DataVisualization', 'plots', 'avg_wc_scores.png')
     # plt.show()
-    plt.savefig(SAVE_PATH)
+    plt.savefig("avg_wc_scores.png")
     return
 
 
@@ -72,9 +72,9 @@ def win_loss_compare(wc_df):
     ax.set(ylabel="Country",xlabel="Number of matches played")
     ax.legend(ncol=2, loc="lower right", frameon=True)
     plt.title('Country wise Win-Loss Record for WC')
-    SAVE_PATH = os.path.join(os.getcwd(), 'DataVisualization', 'plots', 'wc_win_loss.png')
+    # SAVE_PATH = os.path.join(os.getcwd(), 'DataVisualization', 'plots', 'wc_win_loss.png')
     # plt.show()
-    plt.savefig(SAVE_PATH)
+    plt.savefig("wc_win_loss.png")
 
 if __name__ == "__main__":
     df = pd.read_csv("DataProcessing/result_post_step.csv")
