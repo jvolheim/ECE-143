@@ -60,7 +60,7 @@ def plot_avg_scores(avg_inn_score):
             .
     """
 
-    assert isinstance(average_inng_total, pd.DataFrame)
+    assert isinstance(avg_inn_score, pd.DataFrame)
 
     f, ax = plt.subplots(figsize=(12, 6))
     sns.set_color_codes("pastel")
