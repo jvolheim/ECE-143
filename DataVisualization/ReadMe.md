@@ -94,7 +94,7 @@ India against England
 
 #### Requirements
 
-Follow the instructions mentioned under "Requirements" and "Running Code" in the Readme file on the root directory page
+Follow the instructions mentioned under "Requirements" and "Running Ccode" in the Readme file on the root directory page. You can also refer to the Jupyter notebook at https://github.com/jvolheim/ECE-143/blob/main/DataVisualization/ECE143_Group_15.ipynb, to understand how to run the visualisation files for plots. 
 
 ### wc_stats.py
 
