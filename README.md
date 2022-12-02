@@ -7,6 +7,7 @@ ECE-143
 ├─ DataProcessing              -- code for processing 3200+ files to single database
 ├─ DataVisualization           -- code for plotting graphs
 ├─ Raw Data                    -- Data folder with over 3200 csv files
+├─ ECE_143_ppt.pdf             -- Pdf of the group presentation
 ├─ requirements.txt            -- required libaries for plotting data
 ```
 
