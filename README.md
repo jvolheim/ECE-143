@@ -18,4 +18,11 @@ pip install -r requirements.txt
 ```
 
 
+## Running code
+Data Processing code needs to be run from the root folder as 
+```
+python ./DataProcessing/main.py (For Mac and Linux)
+python .\DataProcessing\main.py (For windows)
+```
 
+For visualization, plots are created using different .py files in DataVisualization folder. All the plots are saved in plots folder of DataVisualization folder and also added to jupyter notebook. 
