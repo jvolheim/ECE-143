@@ -3,8 +3,8 @@
 1. [Performances using ground avergaes](#ground)
     * [ground_average_reference](#ground)
     * [ground_average_visuals](#groundvis)
-    * [ground_average](#groundavg)
-2. [Strenghts and weakness insights using win loss analysis](#plots123)
+    * [ground_averages](#groundavg)
+2. [Strengths and weakness insights using win loss analysis](#plots123)
 3. [World Cup win loss and average Analysis](#wcstats)
 4. [Win Loss Analysis](#winloss)
 
@@ -13,7 +13,66 @@
 
 ### ground_average_visuals.py<a name=groundvis></a>
 
-### ground_average.py<a name=groundavg></a>
+### ground_averages.py<a name=groundavg></a>
+
+#### Description
+
+This file contains 3 functions which compute the following metrics in various conditions as well as specific customisations, as described below:
+
+* Function ground_averages -> prepares the data to find the ground average for all stadiums for every year from 2016-2022 for all T20I matches played:
+    * First innings and second innings batting score
+    * First innings and second innings wickets lost
+
+* Function batting_bowling_performances -> computes the batting and bowling performance for both the teams playing a match in all T20s played between 2016-2022 based on:
+    * A team scores higher than the ground averages (batting first) or scores enough to win the game (batting second)
+    * A team holds the opposing team under the ground average (bowling first) or limits the batting team enough to win the game (bowling second)
+
+* Function create_team_visualizations -> computes the win percentage graphs split by batting, bowling and both performances contributing to a win for the final 4 teams in the T20 WC 2022 against the other teams participating in the WC
+
+* Function world_map_visualization -> using the average score innings for a stadium, we plot a world heatmap for ground averages in a particular country in all T20s played between 2016-2022
+
+#### Input-output
+
+**def ground_averages(db)** 
+
+Input : 
+param db: Database ; pandas Dataframe
+
+Output:
+param avg_db: Database ; pandas Dataframe
+param db: Database ; pandas Dataframe
+
+**def batting_bowling_performances(avg_db, utd_db)** 
+
+Input : 
+param avg_db: Database ; pandas Dataframe
+param utd_db: Database ; pandas Dataframe
+
+Output:
+param ds: Database ; pandas Dataframe
+
+**def create_team_visualizations(ds)** 
+
+Input : 
+param ds: Database ; pandas Dataframe
+
+Output:
+![](plots/England_vs_other_teams.png)
+![](plots/India_vs_other_teams.png)
+![](plots/New_Zealand_vs_other_teams.png)
+![](plots/Pakistan_vs_other_teams.png)
+
+**def world_map_visualization(avg_db)** 
+
+Input : 
+param avg_db: Database ; pandas Dataframe
+
+Output:
+![](plots/world_map_for_ground_averages.jpg)
+
+#### Requirements
+
+Follow the instructions mentioned under "Requirements" and "Running Code" in the Readme file on the root directory page. You can also refer to the Jupyter notebook at https://github.com/jvolheim/ECE-143/blob/main/DataVisualization/ECE143_Group_15.ipynb, to understand how to run the visualisation files for plots. 
 
 ### plots_1_2_3.py<a name=plots123></a>
 
@@ -99,7 +158,7 @@ India against England
 
 #### Requirements
 
-Follow the instructions mentioned under "Requirements" and "Running Ccode" in the Readme file on the root directory page. You can also refer to the Jupyter notebook at https://github.com/jvolheim/ECE-143/blob/main/DataVisualization/ECE143_Group_15.ipynb, to understand how to run the visualisation files for plots. 
+Follow the instructions mentioned under "Requirements" and "Running Code" in the Readme file on the root directory page. You can also refer to the Jupyter notebook at https://github.com/jvolheim/ECE-143/blob/main/DataVisualization/ECE143_Group_15.ipynb, to understand how to run the visualisation files for plots. 
 
 ### wc_stats.py <a name=wcstats></a>
 
