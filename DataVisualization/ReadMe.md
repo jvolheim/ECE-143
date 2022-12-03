@@ -1,12 +1,21 @@
-## Visualization ReadMe
+# Data Visualization README
+## Table of contents
+1. [Performances using ground avergaes](#ground)
+    * [ground_average_reference](#ground)
+    * [ground_average_visuals](#groundvis)
+    * [ground_average](#groundavg)
+2. [Strenghts and weakness insights using win loss analysis](#plots123)
+3. [World Cup win loss and average Analysis](#wcstats)
+4. [Win Loss Analysis](#winloss)
 
-### ground_average_reference.py
 
-### ground_average_visuals.py
+### ground_average_reference.py<a name=ground></a>
 
-### ground_average.py
+### ground_average_visuals.py<a name=groundvis></a>
 
-### plots_1_2_3.py
+### ground_average.py<a name=groundavg></a>
+
+### plots_1_2_3.py<a name=plots123></a>
 
 #### Description
 
@@ -92,7 +101,7 @@ India against England
 
 Follow the instructions mentioned under "Requirements" and "Running Ccode" in the Readme file on the root directory page. You can also refer to the Jupyter notebook at https://github.com/jvolheim/ECE-143/blob/main/DataVisualization/ECE143_Group_15.ipynb, to understand how to run the visualisation files for plots. 
 
-### wc_stats.py
+### wc_stats.py <a name=wcstats></a>
 
 This file is used to analyse the performance of teams during the world cup. Different functions are:
 1. seperate_wc()  
@@ -124,7 +133,7 @@ python .\DataVisualization\wc_stats.py
 ![world-cup win loss percentage](plots/wc_win_loss.png)
 
 
-### win_loss.py 
+### win_loss.py <a name=winloss></a>
 
 This file just has a single function winloss() that takes in complete data and plots wins and losses for each team and also prints out win percent. 
 
