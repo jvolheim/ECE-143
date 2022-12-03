@@ -1,15 +1,10 @@
 # Data Visualization README
 ## Table of contents
-1. [Performances using ground averages](#ground)
-    * [ground_averages](#groundavg)
+1. [Performances using ground averages](#groundavg)
 2. [Strengths and weakness insights using win loss analysis](#plots123)
 3. [World Cup win loss and average Analysis](#wcstats)
 4. [Win Loss Analysis](#winloss)
 
-
-### ground_average_reference.py<a name=ground></a>
-
-### ground_average_visuals.py<a name=groundvis></a>
 
 ### ground_averages.py<a name=groundavg></a>
 
