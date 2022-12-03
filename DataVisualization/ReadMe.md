@@ -94,5 +94,45 @@ Follow the instructions mentioned under "Requirements" and "Running Ccode" in th
 
 ### wc_stats.py
 
-## win_loss,py 
+This file is used to analyse the performance of teams during the world cup. Different functions are:
+1. seperate_wc()  
+This function seperates the world cup matches related data from complete data
 
+2. average_inng_total()  
+This function is to find average innings score for each team for a particular innings. Innings number can be passed as parameter.
+
+3. plot_avg_scores()  
+This function plots the average score of both innings for all teams into stacked horizontal bar chart
+
+4. win_loss_inn_wise()    
+This functions returns team wise statistics for world cup (matches played, wins, win percent)
+
+
+5. win_loss_compare()  
+This function analyses win loss percentage for world cup playing teams and plots them. Since the data was quite small (maximum 7 matches per team, we decided to skip this plot in the presentation)
+
+
+#### Running this file
+Please run this file from the root directory using 
+```
+python .\DataVisualization\wc_stats.py
+```
+
+
+#### Plots
+![world_cup_average_scores](plots/avg_wc_scores.png)
+![world-cup win loss percentage](plots/wc_win_loss.png)
+
+
+### win_loss.py 
+
+This file just has a single function winloss() that takes in complete data and plots wins and losses for each team and also prints out win percent. 
+
+#### Running this file
+Please run this file from the root directory using following command. 
+```
+python .\DataVisualization\winloss.py
+```
+
+#### Plots
+![overall win loss percentage](plots/win-loss.png)
